@@ -5,8 +5,10 @@ import { devtools } from 'zustand/middleware'
 interface UserLoggedinValue extends UserInfo {
     isUserCompeltedInfo: boolean;
     height: number;
+    favorites: string[],
     handleFillUserInfo: (userValues: UserInfo) => void;
     handleUserHeight: (userHeight: number) => void;
+    handleUserFavorits: (userFavorites: string[]) => void;
 }
 export const useUserInfo = create<UserLoggedinValue>()(
 
@@ -18,6 +20,7 @@ export const useUserInfo = create<UserLoggedinValue>()(
             city: '',
             gender: '',
             height: 0,
+            favorites: [],
             isUserCompeltedInfo: false,
             handleFillUserInfo: (userValues: UserInfo) => {
                 set((state) => (
@@ -26,6 +29,9 @@ export const useUserInfo = create<UserLoggedinValue>()(
             },
             handleUserHeight: (userHeight: number) => {
                 set((state) => ({ ...state, height: userHeight }))
+            },
+            handleUserFavorits: (userFavorits: string[]) => {
+                set((state) => ({ ...state, favorites: userFavorits }))
             }
         })
     ))
