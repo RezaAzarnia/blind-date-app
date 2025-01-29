@@ -9,7 +9,9 @@ const Login = lazy(() => import("../pages/Login"));
 
 const HeightPicker = lazy(() => import("../pages/HeightPicker"))
 
-const Favorites = lazy(() => import("../pages/Favorites"))
+const Favorites = lazy(() => import("../pages/Favorites"));
+
+const Jobs = lazy(() => import("../pages/Jobs"))
 
 import Loader from "../components/Loader";
 
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "onBoard/favorites",
         element: <Favorites />
+      },
+      {
+        path: "onBoard/jobs",
+        element: <Jobs />
       },
 
     ],

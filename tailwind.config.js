@@ -9,7 +9,6 @@ export default {
         /* Background Colors */
         main: "var(--main-bg)",
         secondary: "var(--secondary-bg)",
-        header: "var(--header-bg)",
         "header-alt": "var(--header-alt-bg)",
         toggle: "var(--toggle-bg)",
         muted: "var(--muted-bg)",
