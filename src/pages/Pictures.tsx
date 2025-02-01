@@ -74,7 +74,7 @@ export default function Pictures() {
     console.log(detections);
     for (let i = 0; i < detections.length; i++) {
       for (let j = i + 1; j < detections.length; j++) {
-        console.log(i, j);
+        // console.log(i, j);
         const distance = faceapi.euclideanDistance(detections[i]!.descriptor, detections[j]!.descriptor);
         if (distance < 0.2) {
           toast("لطفا عکس های تکراری آپلود نکنید", {
@@ -125,6 +125,8 @@ export default function Pictures() {
           closeOnClick: true,
           autoClose: 4000
         })
+    } finally {
+      setIsLoading(false)
     }
   }
   // send user values to api
@@ -197,7 +199,6 @@ export default function Pictures() {
     };
 
     await callImageApi(value)
-    setIsLoading(false)
   }
 
   return (
