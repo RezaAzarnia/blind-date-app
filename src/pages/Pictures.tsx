@@ -160,14 +160,14 @@ export default function Pictures() {
   }
   // submit form 
   const onSubmit = async (value: PicturesProps) => {
-    setIsLoading(true)
     toast.warn("صبر کن هوش مصنوعی عکساتو چک کنه. شاید ۴۰ ثانیه طول بکشه",
       {
         theme: "dark",
         position: "top-center",
         closeOnClick: true,
-        autoClose: 3000
+        autoClose: 2000
       })
+    setIsLoading(true)
 
 
     await loadFaceModels()
@@ -189,7 +189,9 @@ export default function Pictures() {
         }
       })
     )
-    if (!validateFaceImages(detections)) {
+    const isHumanFaces = detections.every(item => item !== undefined);
+
+    if (isHumanFaces && !validateFaceImages(detections)) {
       setIsLoading(false)
       return
     };
