@@ -3,6 +3,8 @@ import { createBrowserRouter } from "react-router";
 // add the items by lazy and show loader by suspense
 const Layout = lazy(() => import("../components/Layout"));
 
+const Home = lazy(() => import("../pages/Home"));
+
 const Error = lazy(() => import("../components/Error"));
 
 const Login = lazy(() => import("../pages/Login"));
@@ -14,8 +16,9 @@ const Favorites = lazy(() => import("../pages/Favorites"));
 const Jobs = lazy(() => import("../pages/Jobs"))
 
 const Pictures = lazy(() => import("../pages/Pictures"))
+
 import Loader from "../components/Loader";
-import Home from "../pages/Home";
+import ProtectRoutes from "../components/ProtectRoutes";
 
 
 export const router = createBrowserRouter([
@@ -27,29 +30,29 @@ export const router = createBrowserRouter([
     errorElement: <Error />,
     children: [
       {
-        index : true , 
+        index: true,
         element: <Home />
       },
-    
+
       {
         path: "onBoard",
         element: <Login />
       },
       {
         path: "onBoard/height",
-        element: <HeightPicker />
+        element: <ProtectRoutes> <HeightPicker /></ProtectRoutes>
       },
       {
         path: "onBoard/favorites",
-        element: <Favorites />
+        element: <ProtectRoutes>  <Favorites /></ProtectRoutes>
       },
       {
         path: "onBoard/jobs",
-        element: <Jobs />
+        element: <ProtectRoutes>  <Jobs /></ProtectRoutes>
       },
       {
         path: "onBoard/pictures",
-        element: <Pictures />
+        element: <ProtectRoutes> <Pictures /></ProtectRoutes>
       }
     ],
   },

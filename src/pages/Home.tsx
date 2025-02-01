@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 export default function Home() {
     const { appData } = useAppdata();
     const navigate = useNavigate();
-
+    // here we will change the check join with api and replace it here
     const isUserLoggedIn = useUserInfo(state => state.isUserCompeltedInfo)
     useEffect(() => {
         if (!isUserLoggedIn) {

@@ -6,7 +6,7 @@ export default function useAppdata() {
     const { hash } = useLocation();
 
     useEffect(() => {
-        setAppData(hash.slice(1))
+        if (hash) setAppData(hash.slice(1))
     }, [hash])
 
     return { appData }
