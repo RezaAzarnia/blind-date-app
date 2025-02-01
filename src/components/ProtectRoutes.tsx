@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import { useUserInfo } from '../store/useUserInfo'
 import { useNavigate } from 'react-router'
 import useAppdata from '../hooks/useAppdata'

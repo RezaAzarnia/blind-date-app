@@ -2,7 +2,9 @@ import { useRef, useEffect, useState } from "react";
 import { useKeenSlider, KeenSliderInstance, KeenSliderOptions } from "keen-slider/react";
 
 interface WheelProps {
-  state: unknown; // Replace with the actual type of the state if possible
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  state: any; // Replace with the actual type of the state if possible
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setState: React.Dispatch<React.SetStateAction<any>>
   perspective?: string;
   length: number;
