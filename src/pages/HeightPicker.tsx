@@ -32,7 +32,7 @@ export default function HeightPicker() {
             </div>
             <Button className="!w-3/5 " disabled={Number(userHeight?.value) < 150} onClick={() => {
                 handleUserHeight(Number(userHeight?.value))
-                navigate("/onBoard/favorites")
+                navigate("/onBoard/favorites",{ replace: true })
                 //         // router.push(`/onBoard/favorites#${currentParams}`);
             }}>
                 بعدی

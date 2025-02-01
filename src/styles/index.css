@@ -1,79 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* --bg-primary: #1c1c1d;
---bg-secondary: #000;
---bg-primary-inverse: #1c1c1d;
---bg-secondary-inverse: #000;
---text-primary: #fff;
---text-inverted: #000;
---text-disabled: #606060;
---hint-color: #98989e;
---bg-header-primary: #000;
---bg-header-secondary: #1c1c1d;
---bg-toggle: #39393d;
---bg-grey: #272728;
---grey-primary: #373739;
---grey-secondary: #313135;
---grey-button: var(--grey-secondary);
---grey-button-secondary: var(--grey-secondary);
---icon-grey: #666;
---border-grey-primary: #313132;
---grey-message: #7a7a7a;
---bg-black-white: #fff;
---color-black-white: #000;
---active-primary: #222223;
---active-secondary: #2b2b2c;
---accent: #3e88f7;
---inactive: #2f2f2f;
---bg-promo: #2e242f;
---section-header-text-color: #8d8e93; */
-/* --bg-primary: black;
---bg-secondary: #fff;
---bg-primary-inverse: #efeff4;
---bg-secondary-inverse: #fff;
---bg-tertiary: hsla(240, 5%, 48%, 0.12);
---bg-quaternary: hsla(240, 5%, 48%, 0.08);
---bg-toast: rgba(45, 45, 45, 0.8);
---text-primary: #fff;
---text-inverted: #000;
---text-disabled: #b9b9ba;
---hint-color: #8e8e93;
---separator: rgba(60, 60, 67, 0.36);
---wallet-separator: #c8c7cb;
---bg-header-primary: #efeff4;
---bg-header-secondary: #fff;
---bg-switcher: #fff;
---bg-switcher-second: #f4f4f5;
---bg-toggle: #e9e9ea;
---bg-grey: #e3e3e8;
---grey: #8e8e93;
---grey-primary: #d0d0d4;
---grey-secondary: #e0e0e5;
---grey-button: #e3e3e8;
---grey-button-secondary: #e3e3e8;
---icon-grey: #999;
---border-grey-primary: #d0d0d4;
---grey-message: #949494;
---bg-black-white: #000;
---color-black-white: #fff;
---dark-grey: #222223;
---active-primary: #e3e3e7;
---active-secondary: #e0e0e4;
---inactive: #e8e8e9;
---bg-promo: #fdf3fe;
---section-header-text-color: #6d6d72;
---bg-plate-gpt: #efeff4;
---modal-cross: #8e8e93;
---logo-ton: #0098ea;
---step-item: #c9c9cd;
---accent: rgb(220, 5, 23);
---accent-red: #ff3b30;
---accent-pink: #ff2d55;
---accent-indigo: #5856d6;
---accent-purple: #af52de;
---confirm: #34c759;
---notcoin-promo: rgba(255, 197, 2, 0.08); */
+
 :root {
   /* Background Colors */
   --main-bg: #1c1c1d;
@@ -273,4 +201,17 @@ html::-webkit-scrollbar {
 }
 .fade-animation {
   animation: fade 0.5s;
+}
+
+.picture-input:nth-child(1){
+  @apply rounded-tr-xl
+}
+.picture-input:nth-child(2){
+  @apply rounded-tl-xl
+}
+.picture-input:nth-child(3){
+  @apply rounded-br-xl
+}
+.picture-input:nth-child(4){
+  @apply rounded-bl-xl
 }

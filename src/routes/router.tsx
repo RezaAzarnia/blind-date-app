@@ -13,7 +13,9 @@ const Favorites = lazy(() => import("../pages/Favorites"));
 
 const Jobs = lazy(() => import("../pages/Jobs"))
 
+const Pictures = lazy(() => import("../pages/Pictures"))
 import Loader from "../components/Loader";
+import Home from "../pages/Home";
 
 
 export const router = createBrowserRouter([
@@ -24,6 +26,11 @@ export const router = createBrowserRouter([
     </Suspense >,
     errorElement: <Error />,
     children: [
+      {
+        index : true , 
+        element: <Home />
+      },
+    
       {
         path: "onBoard",
         element: <Login />
@@ -40,7 +47,10 @@ export const router = createBrowserRouter([
         path: "onBoard/jobs",
         element: <Jobs />
       },
-
+      {
+        path: "onBoard/pictures",
+        element: <Pictures />
+      }
     ],
   },
 ]);

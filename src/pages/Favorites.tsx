@@ -39,7 +39,7 @@ export default function Favorites() {
                 theme: "dark",
             });
             addUserFavorits(selectedFavorites)
-            navigate("/onBoard/jobs")
+            navigate("/onBoard/jobs",{ replace: true })
         } else {
             toast("❗ حداقل یک مورد را انتخاب کنید", {
                 autoClose: 3000,

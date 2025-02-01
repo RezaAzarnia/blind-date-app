@@ -33,7 +33,7 @@ export default function Login() {
     const onSubmit = (data: UserInfo) => {
         handleFillUserInfo(data)
 
-        navigate("/onBoard/height")
+        navigate("/onBoard/height", { replace: true })
     }
 
     return (

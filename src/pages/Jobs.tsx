@@ -50,7 +50,7 @@ export default function Jobs() {
                 closeOnClick: true
             });
             addUserJobs(selectedJobs)
-            navigate("/onBoard/pictures");
+            navigate("/onBoard/pictures",{ replace: true });
         } else {
             toast("❗ حداقل یک شغل را انتخاب کنید", {
                 autoClose: 2000,

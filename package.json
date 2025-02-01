@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "^4.0.0",
+    "axios": "^1.7.9",
+    "face-api.js": "^0.22.2",
     "keen-slider": "^6.8.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
