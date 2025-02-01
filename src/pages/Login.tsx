@@ -8,8 +8,10 @@ import SelectAge from '../components/SelectAge';
 import Button from '../components/Button';
 import { useUserInfo } from '../store/useUserInfo';
 import { useNavigate } from 'react-router';
+import useAppdata from '../hooks/useAppdata';
 
 export default function Login() {
+    const { appData } = useAppdata()
     const methods = useForm<UserInfo>({
         defaultValues: {
             age: null,
@@ -33,7 +35,7 @@ export default function Login() {
     const onSubmit = (data: UserInfo) => {
         handleFillUserInfo(data)
 
-        navigate("/onBoard/height", { replace: true })
+        navigate(`/onBoard/height/#${appData}`, { replace: true })
     }
 
     return (

@@ -1,11 +1,23 @@
-import React from 'react'
-import { useLocation } from 'react-router';
+import { useEffect } from 'react';
+import useAppdata from '../hooks/useAppdata';
+import { useUserInfo } from '../store/useUserInfo';
+import { useNavigate } from 'react-router';
 
 export default function Home() {
-    const { hash } = useLocation();
-    console.log(hash);
+    const { appData } = useAppdata();
+    const navigate = useNavigate();
+
+    const isUserLoggedIn = useUserInfo(state => state.isUserCompeltedInfo)
+    useEffect(() => {
+        if (!isUserLoggedIn) {
+            navigate(`/onBoard/#${appData}`, { replace: true })
+        }
+    }, [appData, isUserLoggedIn, navigate])
 
     return (
-        <div>Home</div>
+        <div className='text-end'>hash is :<br /> <span className='text-xs'>
+            {appData}
+        </span>
+        </div>
     )
 }

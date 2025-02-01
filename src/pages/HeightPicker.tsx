@@ -3,11 +3,15 @@ import { useUserInfo } from "../store/useUserInfo";
 import Wheel from "../components/wheel";
 import Button from "../components/Button";
 import { useNavigate } from "react-router";
+import useAppdata from "../hooks/useAppdata";
 
 export default function HeightPicker() {
+    const { appData } = useAppdata();
+
     const [userHeight, setUserHeight] = useState<{ value: number } | null>(null)
     const navigate = useNavigate()
     const handleUserHeight = useUserInfo(state => state.handleUserHeight)
+
     return (
 
         <div className="relative flex flex-col py-8 w-full h-[80vh] bg-black justify-between items-center">
@@ -32,8 +36,7 @@ export default function HeightPicker() {
             </div>
             <Button className="!w-3/5 " disabled={Number(userHeight?.value) < 150} onClick={() => {
                 handleUserHeight(Number(userHeight?.value))
-                navigate("/onBoard/favorites",{ replace: true })
-                //         // router.push(`/onBoard/favorites#${currentParams}`);
+                navigate(`/onBoard/favorites/#${appData}`, { replace: true })
             }}>
                 بعدی
             </Button>

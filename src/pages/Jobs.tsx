@@ -5,8 +5,11 @@ import Button from "../components/Button";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router";
 import { useUserInfo } from "../store/useUserInfo";
+import useAppdata from "../hooks/useAppdata";
 
 export default function Jobs() {
+    const { appData } = useAppdata()
+
     const [selectedJobs, setSelectedJobs] = useState<string[]>([])
     const [searchValue, setSearchValue] = useState('')
     const navigate = useNavigate()
@@ -50,7 +53,7 @@ export default function Jobs() {
                 closeOnClick: true
             });
             addUserJobs(selectedJobs)
-            navigate("/onBoard/pictures",{ replace: true });
+            navigate(`/onBoard/pictures/#${appData}`, { replace: true });
         } else {
             toast("❗ حداقل یک شغل را انتخاب کنید", {
                 autoClose: 2000,

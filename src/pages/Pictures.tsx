@@ -10,6 +10,7 @@ import * as faceapi from "face-api.js";
 import PictureInput from "../components/PictureInput";
 import Button from "../components/Button";
 import laoderHaer from "../../public/loaderHeart.gif"
+import useAppdata from "../hooks/useAppdata";
 enum InputNames {
   A = "a",
   B = "b",
@@ -20,6 +21,8 @@ type PicturesProps = {
   [key in InputNames]: File | undefined
 }
 export default function Pictures() {
+  const { appData } = useAppdata()
+
   const [isLoading, setIsLoading] = useState(false)
   const navigate = useNavigate()
 
@@ -149,7 +152,7 @@ export default function Pictures() {
 
       if (res.status === 200) {
         // add params later
-        navigate("/", { replace: true })
+        navigate(`/#${appData}`, { replace: true });
       }
     } catch (error) {
       console.error("Error sending data to server:", error);
@@ -245,9 +248,9 @@ export default function Pictures() {
                 })
               }
             </div>
-              <p className="p-4 text-sm text-start text-slate-gray">
-               برای ادامه شما باید 4 تا عکس اضافه کنی. عکس هات تمام رخ و واضح باشند.
-              </p>
+            <p className="p-4 text-sm text-start text-slate-gray">
+              برای ادامه شما باید 4 تا عکس اضافه کنی. عکس هات تمام رخ و واضح باشند.
+            </p>
             <Button className="mt-2" disabled={isDisabled || isLoading}>
               ادامه
             </Button>

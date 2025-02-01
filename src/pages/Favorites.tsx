@@ -6,7 +6,9 @@ import SelectableCheckboxList from "../components/SelectableCheckboxList";
 import Button from "../components/Button";
 import { useNavigate } from "react-router";
 import { useUserInfo } from "../store/useUserInfo";
+import useAppdata from "../hooks/useAppdata";
 export default function Favorites() {
+    const { appData } = useAppdata()
 
     const [selectedFavorites, setSelectedFavorites] = useState<string[]>([]);
     const addUserFavorits = useUserInfo(state => state.handleUserFavorits)
@@ -39,7 +41,7 @@ export default function Favorites() {
                 theme: "dark",
             });
             addUserFavorits(selectedFavorites)
-            navigate("/onBoard/jobs",{ replace: true })
+            navigate(`/onBoard/jobs/#${appData}`, { replace: true })
         } else {
             toast("❗ حداقل یک مورد را انتخاب کنید", {
                 autoClose: 3000,
