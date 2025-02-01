@@ -203,15 +203,15 @@ html::-webkit-scrollbar {
   animation: fade 0.5s;
 }
 
-.picture-input:nth-child(1){
-  @apply rounded-tr-xl
+.picture-input:nth-child(1) {
+  @apply rounded-tr-xl;
 }
-.picture-input:nth-child(2){
-  @apply rounded-tl-xl
+.picture-input:nth-child(2) {
+  @apply rounded-tl-xl;
 }
-.picture-input:nth-child(3){
-  @apply rounded-br-xl
+.picture-input:nth-child(3) {
+  @apply rounded-br-xl;
 }
-.picture-input:nth-child(4){
-  @apply rounded-bl-xl
+.picture-input:nth-child(4) {
+  @apply rounded-bl-xl;
 }

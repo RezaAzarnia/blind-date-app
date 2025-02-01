@@ -69,12 +69,13 @@ export default function Pictures() {
     setValue(key, undefined)
   }
   // validate imagaes that they are the same or not
-  const validateFaceImages = (detections: (faceapi.WithFaceDescriptor<faceapi.WithFaceLandmarks<{ detection: faceapi.FaceDetection }>> | undefined)[]): boolean => {
+  const validateFaceImages = (
+    detections:
+     (faceapi.WithFaceDescriptor<faceapi.WithFaceLandmarks<{ detection: faceapi.FaceDetection }>> | undefined)[]): boolean => {
     // check distance between pictures one by one and if the distance less than 0.62 so the user pictures are same and if less than 0.2 so the pictures are same with high detect level;
-    console.log(detections);
+
     for (let i = 0; i < detections.length; i++) {
       for (let j = i + 1; j < detections.length; j++) {
-        // console.log(i, j);
         const distance = faceapi.euclideanDistance(detections[i]!.descriptor, detections[j]!.descriptor);
         if (distance < 0.2) {
           toast("لطفا عکس های تکراری آپلود نکنید", {
@@ -83,21 +84,23 @@ export default function Pictures() {
             closeOnClick: true,
             autoClose: 4000
           });
+          console.log('repeat pic');
           return false;
         }
-
-        if (distance > 0.62) {
+        if (!isShowToast.current && distance > 0.62) {
+          isShowToast.current = true
           toast("لطفا فقط تصاویر یک فرد را آپلود کنید", {
             theme: "dark",
             position: "top-center",
             closeOnClick: true,
             autoClose: 4000
           });
+          console.log('same pic');
           return false;
         }
       }
     }
-    // console.log('ok');
+    console.log('ok');
     return true
   }
   // send user imagse to server
@@ -186,19 +189,21 @@ export default function Pictures() {
         if (response == undefined) {
           setIsLoading(false)
           handleRemovePic(item[0] as InputNames)
+          return undefined;
         } else {
           return response
         }
       })
     )
-    const isHumanFaces = detections.every(item => item !== undefined);
-
-    if (isHumanFaces && !validateFaceImages(detections)) {
+    console.log(detections);
+    if ( !validateFaceImages(detections)) {
       setIsLoading(false)
+      console.log('problem');
       return
-    };
-
-    await callImageApi(value)
+    } else {
+      console.log('call image api'); 
+      await callImageApi(value)
+    }
   }
 
   return (

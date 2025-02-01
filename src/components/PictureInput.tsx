@@ -46,7 +46,7 @@ export default function PictureInput({ name }: Props) {
                 {
                     picturePreview &&
                     <div className="absolute top-0 left-0 w-full h-full">
-                        <img src={picturePreview} alt={"uploaded picture"} className='object-cover w-full h-full rounded-tl-md' />
+                        <img src={picturePreview} alt={"uploaded picture"} className='object-cover w-full h-full ' />
                     </div>
                 }
             </label>
