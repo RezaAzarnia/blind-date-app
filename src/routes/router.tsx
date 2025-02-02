@@ -1,6 +1,8 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router";
+import Loader from "../components/Loader";
 // add the items by lazy and show loader by suspense
+
 const Layout = lazy(() => import("../components/Layout"));
 
 const Home = lazy(() => import("../pages/Home"));
@@ -17,8 +19,7 @@ const Jobs = lazy(() => import("../pages/Jobs"))
 
 const Pictures = lazy(() => import("../pages/Pictures"))
 
-import Loader from "../components/Loader";
-import ProtectRoutes from "../components/ProtectRoutes";
+const ProtectRoutes = lazy(() => import("../components/ProtectRoutes"))
 
 
 export const router = createBrowserRouter([
@@ -36,23 +37,48 @@ export const router = createBrowserRouter([
 
       {
         path: "onBoard",
-        element: <Login />
+        element:
+          <Login />
       },
       {
         path: "onBoard/height",
-        element: <ProtectRoutes> <HeightPicker /></ProtectRoutes>
+        element:
+          <ProtectRoutes>
+            <HeightPicker />
+          </ProtectRoutes>,
+        loader: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+        }
       },
       {
         path: "onBoard/favorites",
-        element: <ProtectRoutes>  <Favorites /></ProtectRoutes>
+        element:
+          <ProtectRoutes>
+            <Favorites />
+          </ProtectRoutes>,
+        loader: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+        }
       },
       {
         path: "onBoard/jobs",
-        element: <ProtectRoutes>  <Jobs /></ProtectRoutes>
+        element:
+          <ProtectRoutes>
+            <Jobs />
+          </ProtectRoutes>,
+        loader: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+        }
       },
       {
         path: "onBoard/pictures",
-        element: <ProtectRoutes> <Pictures /></ProtectRoutes>
+        element:
+          <ProtectRoutes>
+            <Pictures />
+          </ProtectRoutes>,
+        loader: async () => {
+          await new Promise((resolve) => setTimeout(resolve, 2000))
+        }
       }
     ],
   },
