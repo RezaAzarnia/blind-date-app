@@ -9,7 +9,7 @@ import { UserData } from "../types";
 import * as faceapi from "face-api.js";
 import PictureInput from "../components/PictureInput";
 import Button from "../components/Button";
-import laoderHaer from "../../public/loaderHeart.gif"
+import laoderHaer from "../../public/loading heart.webm"
 import useAppdata from "../hooks/useAppdata";
 enum InputNames {
   A = "a",
@@ -51,7 +51,6 @@ export default function Pictures() {
       )
       .withFaceLandmarks()
       .withFaceDescriptor()
-      .withAgeAndGender();
   }
   //remove the picture from files if not human or picture don't clear
   const handleRemovePic = (key: InputNames): void => {
@@ -71,7 +70,7 @@ export default function Pictures() {
   // validate imagaes that they are the same or not
   const validateFaceImages = (
     detections:
-     (faceapi.WithFaceDescriptor<faceapi.WithFaceLandmarks<{ detection: faceapi.FaceDetection }>> | undefined)[]): boolean => {
+      (faceapi.WithFaceDescriptor<faceapi.WithFaceLandmarks<{ detection: faceapi.FaceDetection }>> | undefined)[]): boolean => {
     // check distance between pictures one by one and if the distance less than 0.62 so the user pictures are same and if less than 0.2 so the pictures are same with high detect level;
 
     for (let i = 0; i < detections.length; i++) {
@@ -196,12 +195,12 @@ export default function Pictures() {
       })
     )
     console.log(detections);
-    if ( !validateFaceImages(detections)) {
+    if (!validateFaceImages(detections)) {
       setIsLoading(false)
       console.log('problem');
       return
     } else {
-      console.log('call image api'); 
+      console.log('call image api');
       await callImageApi(value)
     }
   }
@@ -209,16 +208,14 @@ export default function Pictures() {
   return (
     <>
       {
-        isLoading &&
+        !isLoading &&
         <>
           <div className="fixed top-0 left-0 z-10 w-full min-h-screen bg-black/50 backdrop-blur-md">
           </div>
           <div className="fixed z-50 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 ">
-            <img
-              src={laoderHaer}
-              alt="loader"
-              className="object-cover w-80 h-96"
-            />
+            <video autoPlay loop muted playsInline className="w-80 h-96">
+              <source src={laoderHaer} type="video/webm" />
+            </video>
           </div>
         </>
       }

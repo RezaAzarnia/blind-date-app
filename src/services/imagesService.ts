@@ -1,15 +1,13 @@
-import { baseUrl } from "./baseUrl";
+// import { baseUrl } from "./baseUrl";
 import * as faceapi from "face-api.js";
+import { baseUrl } from "./baseUrl";
 
 const loadFaceModels = async () => {
   console.log("isLoading");
   await Promise.all([
-    faceapi.nets.ssdMobilenetv1.loadFromUri("/models"),
     faceapi.nets.tinyFaceDetector.loadFromUri("/models"),
     faceapi.nets.faceLandmark68Net.loadFromUri("/models"),
     faceapi.nets.faceRecognitionNet.loadFromUri("/models"),
-    faceapi.nets.faceExpressionNet.loadFromUri("/models"),
-    faceapi.nets.ageGenderNet.loadFromUri("/models"),
   ]);
   console.log("loaded");
 };
@@ -23,5 +21,6 @@ const sendUserImage = async (imgaesData: FormData) => {
   });
   return res;
 };
+
 
 export { loadFaceModels, sendUserImage };
