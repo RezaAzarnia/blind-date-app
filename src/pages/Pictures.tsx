@@ -208,7 +208,7 @@ export default function Pictures() {
   return (
     <>
       {
-        isLoading &&
+        !isLoading &&
         <>
           <div className="fixed top-0 left-0 z-10 w-full min-h-screen bg-black/50 backdrop-blur-md">
           </div>
